@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qrticket/features/order_ticket/constants/images.dart';
+import 'package:qrticket/features/shared/constants/images.dart';
 import 'package:qrticket/features/order_ticket/screens/order_view.dart';
 
 class HomeView extends StatelessWidget {

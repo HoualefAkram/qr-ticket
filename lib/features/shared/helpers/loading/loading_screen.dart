@@ -50,7 +50,7 @@ class LoadingScreen {
                   maxHeight: size.height * 0.8,
                   minWidth: size.width * 0.5),
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Padding(

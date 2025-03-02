@@ -9,7 +9,7 @@ class OrderService {
     );
   }
 
-  static Future<void> createOrder({
+  static Future<String> createOrder({
     required String familyName,
     required String firstName,
     required String startCity,
@@ -26,6 +26,6 @@ class OrderService {
       'date': date,
       'id': idFromTimeAndName,
     });
-    // Create order
+    return idFromTimeAndName;
   }
 }
