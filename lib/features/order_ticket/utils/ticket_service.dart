@@ -25,6 +25,7 @@ class TicketService {
       'startCity': startCity,
       'endCity': endCity,
       'date': date,
+      'isUsed': false,
       'id': idFromTimeAndName,
     });
     return idFromTimeAndName;
@@ -45,6 +46,22 @@ class TicketService {
       endCity: data['endCity'],
       dateTime: data['date'],
       id: data['id'],
+      isUsed: data['isUsed'],
     );
+  }
+
+  static Future<void> markTicketAsUsed(String id) async {
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance.collection('orders').get();
+    final queryDocumentSnapshot = querySnapshot.docs.where(
+      (element) => element.data()["id"] == id,
+    );
+    if (queryDocumentSnapshot.isEmpty) return;
+    await FirebaseFirestore.instance
+        .collection('orders')
+        .doc(queryDocumentSnapshot.first.id)
+        .update({
+      'isUsed': true,
+    });
   }
 }

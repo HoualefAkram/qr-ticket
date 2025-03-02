@@ -5,6 +5,7 @@ class Ticket {
   final String endCity;
   final String dateTime;
   final String id;
+  final bool isUsed;
 
   Ticket({
     required this.firstName,
@@ -12,6 +13,7 @@ class Ticket {
     required this.startCity,
     required this.endCity,
     required this.dateTime,
+    required this.isUsed,
     required this.id,
   });
 
@@ -22,12 +24,13 @@ class Ticket {
       startCity: data['startCity'],
       endCity: data['endCity'],
       dateTime: data['date'],
+      isUsed: data['isUsed'],
       id: data['id'],
     );
   }
 
   @override
   String toString() {
-    return 'Ticket{firstName: $firstName, familyName: $familyName, startCity: $startCity, endCity: $endCity, date: $dateTime, id: $id}';
+    return 'Ticket{firstName: $firstName, familyName: $familyName, startCity: $startCity, endCity: $endCity, date: $dateTime, isUsed: $isUsed ,id: $id}';
   }
 }

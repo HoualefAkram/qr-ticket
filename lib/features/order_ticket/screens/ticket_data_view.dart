@@ -173,6 +173,25 @@ class _OrderViewState extends State<TicketDataView> {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 44,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: widget.ticket.isUsed ? Colors.red : Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    height: 50,
+                    alignment: Alignment.center,
+                    width: MediaQuery.sizeOf(context).width,
+                    child: Text(
+                      "${widget.ticket.isUsed ? "" : "Not"} used",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

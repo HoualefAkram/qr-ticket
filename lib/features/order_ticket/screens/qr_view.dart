@@ -71,6 +71,7 @@ class _QrTicketViewState extends State<QrTicketView> {
             .then((_) {
           _isNavigating = false;
         });
+        TicketService.markTicketAsUsed(scanData.code!);
       } else {
         _isNavigating = false;
       }
