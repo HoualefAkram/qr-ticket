@@ -1,36 +1,18 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:qrticket/features/order_ticket/screens/ticket_ordered_view.dart';
-import 'package:qrticket/features/order_ticket/utils/ticket_service.dart';
-import 'package:qrticket/features/shared/helpers/loading/loading_screen.dart';
+import 'package:qrticket/features/order_ticket/models/ticket.dart';
 
-class OrderView extends StatefulWidget {
-  const OrderView({super.key});
+class TicketDataView extends StatefulWidget {
+  final Ticket ticket;
+  const TicketDataView({
+    super.key,
+    required this.ticket,
+  });
 
   @override
-  State<OrderView> createState() => _OrderViewState();
+  State<TicketDataView> createState() => _OrderViewState();
 }
 
-class _OrderViewState extends State<OrderView> {
-  late final TextEditingController _familyNameController;
-  late final TextEditingController _firstNameController;
-  late final TextEditingController _startCityController;
-  late final TextEditingController _endCityController;
-  late final TextEditingController _dateController;
-  late final TextEditingController _timeController;
-
-  @override
-  void initState() {
-    _familyNameController = TextEditingController();
-    _firstNameController = TextEditingController();
-    _startCityController = TextEditingController();
-    _endCityController = TextEditingController();
-    _dateController = TextEditingController();
-    _timeController = TextEditingController();
-    super.initState();
-  }
-
+class _OrderViewState extends State<TicketDataView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +24,7 @@ class _OrderViewState extends State<OrderView> {
         automaticallyImplyLeading: true,
         centerTitle: true,
         title: const Text(
-          'Order Ticket',
+          'Ticket information',
           style: TextStyle(
             color: Colors.black,
             fontSize: 22,
@@ -66,7 +48,9 @@ class _OrderViewState extends State<OrderView> {
                     ),
                   ),
                   TextField(
-                    controller: _familyNameController,
+                    enabled: false,
+                    controller:
+                        TextEditingController(text: widget.ticket.familyName),
                   ),
                   const SizedBox(
                     height: 22,
@@ -79,7 +63,9 @@ class _OrderViewState extends State<OrderView> {
                     ),
                   ),
                   TextField(
-                    controller: _firstNameController,
+                    enabled: false,
+                    controller:
+                        TextEditingController(text: widget.ticket.firstName),
                   ),
                   const SizedBox(
                     height: 22,
@@ -100,7 +86,9 @@ class _OrderViewState extends State<OrderView> {
                               ),
                             ),
                             TextField(
-                              controller: _startCityController,
+                              enabled: false,
+                              controller: TextEditingController(
+                                  text: widget.ticket.startCity),
                             ),
                           ],
                         ),
@@ -122,7 +110,9 @@ class _OrderViewState extends State<OrderView> {
                               ),
                             ),
                             TextField(
-                              controller: _endCityController,
+                              enabled: false,
+                              controller: TextEditingController(
+                                  text: widget.ticket.endCity),
                             ),
                           ],
                         ),
@@ -148,7 +138,10 @@ class _OrderViewState extends State<OrderView> {
                               ),
                             ),
                             TextField(
-                              controller: _dateController,
+                              enabled: false,
+                              controller: TextEditingController(
+                                text: widget.ticket.dateTime,
+                              ),
                             ),
                           ],
                         ),
@@ -170,7 +163,10 @@ class _OrderViewState extends State<OrderView> {
                               ),
                             ),
                             TextField(
-                              controller: _timeController,
+                              enabled: false,
+                              controller: TextEditingController(
+                                text: widget.ticket.dateTime,
+                              ),
                             ),
                           ],
                         ),
@@ -180,45 +176,6 @@ class _OrderViewState extends State<OrderView> {
                 ],
               ),
             ),
-            const Spacer(),
-            InkWell(
-              onTap: () async {
-                LoadingScreen().show(context: context, text: "Ordering...");
-                final String id = await TicketService.createOrder(
-                  familyName: _familyNameController.text,
-                  firstName: _firstNameController.text,
-                  startCity: _startCityController.text,
-                  endCity: _endCityController.text,
-                  date: _dateController.text,
-                );
-                log("Order created");
-                LoadingScreen().hide();
-                if (!context.mounted) return;
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => TicketOrderedView(
-                      text: id,
-                    ),
-                  ),
-                );
-              },
-              child: Ink(
-                width: MediaQuery.sizeOf(context).width,
-                height: 70,
-                color: Colors.black87,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Buy now",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),

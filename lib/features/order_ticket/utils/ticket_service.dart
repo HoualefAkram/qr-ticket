@@ -30,15 +30,14 @@ class TicketService {
     return idFromTimeAndName;
   }
 
-  static Future<Ticket> getTicketFromId(String id) async {
+  static Future<Ticket?> getTicketFromId(String id) async {
     final QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection('orders').get();
-    final Map<String, dynamic> data = querySnapshot.docs
-        .where(
-          (element) => element.data()["id"] == id,
-        )
-        .first
-        .data();
+    final queryDocumentSnapshot = querySnapshot.docs.where(
+      (element) => element.data()["id"] == id,
+    );
+    if (queryDocumentSnapshot.isEmpty) return null;
+    final data = queryDocumentSnapshot.first.data();
     return Ticket(
       familyName: data['familyName'],
       firstName: data['firstName'],

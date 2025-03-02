@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class TicketQrView extends StatelessWidget {
+class TicketOrderedView extends StatelessWidget {
   final String text;
-  const TicketQrView({
+  const TicketOrderedView({
     super.key,
     required this.text,
   });

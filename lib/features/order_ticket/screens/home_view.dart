@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrticket/features/order_ticket/screens/qr_view.dart';
 import 'package:qrticket/features/shared/constants/images.dart';
 import 'package:qrticket/features/order_ticket/screens/order_view.dart';
 
@@ -22,7 +23,11 @@ class HomeView extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => QrTicketView(),
+                ));
+              },
             )
           ],
         ),
