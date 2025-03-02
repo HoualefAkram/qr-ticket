@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "684126863896",
+    "project_id": "qr-ticket-4bb18",
+    "storage_bucket": "qr-ticket-4bb18.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684126863896:android:cd947ef37b6b3305dfb96d",
+        "android_client_info": {
+          "package_name": "com.example.qrticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkqWFNeVD3-lWWQgwqpIm9jgrIqkalXIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
