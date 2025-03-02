@@ -142,7 +142,7 @@ class HomeView extends StatelessWidget {
                                       Colors.black,
                                     ),
                                   ),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) => OrderView(),

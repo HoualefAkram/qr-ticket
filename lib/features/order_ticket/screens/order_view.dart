@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:qrticket/features/order_ticket/screens/ticket_qr_view.dart';
-import 'package:qrticket/features/order_ticket/utils/order_service.dart';
+import 'package:qrticket/features/order_ticket/utils/ticket_service.dart';
 import 'package:qrticket/features/shared/helpers/loading/loading_screen.dart';
 
 class OrderView extends StatefulWidget {
@@ -184,7 +184,7 @@ class _OrderViewState extends State<OrderView> {
             InkWell(
               onTap: () async {
                 LoadingScreen().show(context: context, text: "Ordering...");
-                final String id = await OrderService.createOrder(
+                final String id = await TicketService.createOrder(
                   familyName: _familyNameController.text,
                   firstName: _firstNameController.text,
                   startCity: _startCityController.text,
